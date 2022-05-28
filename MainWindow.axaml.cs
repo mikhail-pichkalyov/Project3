@@ -20,9 +20,9 @@ namespace Project3
         bool shift;
         bool point;
         bool pointlip;
-        bool pointcheck;
+        /*bool pointcheck;
         bool minuslip;
-        int index;
+        int index;*/
         private void ClrButtonClick(object sender, RoutedEventArgs e)
         {
             if (Result.Text != "") Result.Text = "";//чистим окно вывода
@@ -41,40 +41,44 @@ namespace Project3
             if ((int)e.Key == 116 || (int)e.Key == 117)
                 shift = true;
 
-            if ((int)e.Key < 34 || (int)e.Key > 43 || shift)
+            if (((int)e.Key < 34 || (int)e.Key > 43) && ((int)e.Key < 74 || (int)e.Key > 83) || shift)
                 e.Handled = true;
         }
         private void txtPassword_KeyPressUp(object sender, KeyEventArgs e)
         {
             if ((int)e.Key == 116 || (int)e.Key == 117)//если отжали шифт
                 shift = false;
-            if ((int)e.Key == 144||(int)e.Key == 145 || (int)e.Key == 142 && point)//если введена предположительно точка, проверяем, она ли это
+            if ((int)e.Key == 144||(int)e.Key == 145 || (int)e.Key == 142)//если введена предположительно точка, проверяем, она ли это
             { 
                 pointlip = false;//точка отлипает
-                if(!pointcheck)//если точки ещё нет
+                
+                if(Argument.Text.IndexOf('.')==-1)//если точки ещё нет
                 {
-                    if (Argument.Text[Argument.Text.Length - 1] != '.')//если введена не точка
-                    {
                         point = false;
+                    if (Argument.Text[Argument.Text.Length - 1]<'0'|| Argument.Text[Argument.Text.Length - 1] > '9')
                         Argument.Text = Argument.Text.Substring(0, Argument.Text.Length - 1);//удаляем последний символ строки, это должна была быть точка, но это не она
-                    }
+                }
                     else
                     {
-                        pointcheck = true;
-                    }
+                    point = true;
+                    if (Argument.Text[0]=='.')
+                        Argument.Text = "0" + Argument.Text;
+                    
                 }
             }
+            if (((int)e.Key == 144 || (int)e.Key == 145 || (int)e.Key == 142|| (int)e.Key == 143)&& Argument.Text.Length>1)
+                if (Argument.Text[0] == '-' && Argument.Text[1]=='.')
+                        Argument.Text = "-0" + Argument.Text.Substring(1);
         }
         private void txtPassword_KeyPressDown(object sender, KeyEventArgs e)//защита от дурака при вводе числа
         {
             if ((int)e.Key == 116 || (int)e.Key == 117)//чтобы при зажатии шифт нельзя было нажать на цифры
                 shift = true;
             //ниже условие, если это не цифра, не первый раз встречающаяся точка, зажат шифт или минус не первым символом
-            if ((((int)e.Key < 34 || (int)e.Key > 43 && ((int)e.Key != 144 && (int)e.Key != 145 && (int)e.Key != 142 || point) || shift || pointlip) && (((int)e.Key != 143 || Argument.SelectionStart!=0)||minuslip))||(Argument.Text!=null&&Argument.SelectionStart<= Argument.Text.IndexOf('-')))
+            if (((((int)e.Key < 34 || (int)e.Key > 43)&&((int)e.Key < 74 || (int)e.Key > 83) && ((int)e.Key != 144 && (int)e.Key != 145 && (int)e.Key != 142 || (Argument.Text!=null&&Argument.Text.IndexOf('.') != -1)) || shift || pointlip) && (((int)e.Key != 143 || Argument.SelectionStart!=0)/*||minuslip*/))||(Argument.Text!=null&&Argument.SelectionStart<= Argument.Text.IndexOf('-')))
                 e.Handled = true;
-            else minuslip = true;//тут прочитывается, что уже не первый символ и минус тут не поставить
             if ((int)e.Key == 144||(int)e.Key == 145 || (int)e.Key == 142)//если это возможные клавиши, записывающие точку
-            { point = true;pointlip = true;  }//просчитывается, что точка уже использовалась, а если точка удерживается, то просчитывается, чтобы ничего не вводилось, пока точка залипает
+            { pointlip = true;  }//просчитывается, что точка уже использовалась, а если точка удерживается, то просчитывается, чтобы ничего не вводилось, пока точка залипает
         }
         private void CalcButtonClick(object sender, RoutedEventArgs e)
         {
@@ -92,6 +96,10 @@ namespace Project3
                 {
                     com = "i";
                     arg= arg.Substring(1);
+                    if(arg=="0")
+                    {
+                        com = "";
+                    }
                 }
                 Result.Text=LongDigits.sqrt(arg, acur)+com;
             }
@@ -394,6 +402,7 @@ namespace Project3
             }
 
             if (nac > 0) exresult = result.digits + '.';//если количество знаков после запятой больше нудля, ставим точку
+            else exresult = result.digits;
             while (j < nac)//пока не закончились знаки после запятой
             {   //здесь почти то же, что и было в первой части за парой исключений
                 t.digits += Convert.ToString(doublepart[0]) + Convert.ToString(doublepart[1]);
