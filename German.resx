@@ -129,6 +129,9 @@
   <data name="clear" xml:space="preserve">
     <value>Ergebnisfeld löschen</value>
   </data>
+  <data name="help" xml:space="preserve">
+    <value>Für alle Anfragen wenden Sie sich bitte an</value>
+  </data>
   <data name="result" xml:space="preserve">
     <value>Ergebnis</value>
   </data>

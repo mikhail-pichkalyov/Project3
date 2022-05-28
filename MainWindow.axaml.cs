@@ -86,8 +86,10 @@ namespace Project3
             string acr = Accuracy.Text;//точность текст
             string com = "";
             int acur;//точность в чилсе
-            if(arg!="")
+            if(arg!=null)
             {
+                if((arg.Length>2)||((arg!="-.")&&(arg!=".")&&(arg!="-")))
+                {
                 if (acr == null)
                     acur = 3;
                 else
@@ -102,6 +104,8 @@ namespace Project3
                     }
                 }
                 Result.Text=LongDigits.sqrt(arg, acur)+com;
+                }
+                
             }
         }
 
@@ -117,6 +121,7 @@ namespace Project3
                         CalcBTN.Content = Russian.ResourceManager.GetString("calculate");
                         Result.Watermark = Russian.ResourceManager.GetString("result");
                         ClrBtn.Content = Russian.ResourceManager.GetString("clear");
+                        Help.Text= Russian.ResourceManager.GetString("help")+"\nadveneksanov@gmail.com";
                         ClrBtn.Width = 180;
                         break;
                 case 0: //Английский
@@ -125,6 +130,7 @@ namespace Project3
                         CalcBTN.Content = English.ResourceManager.GetString("calculate");
                         Result.Watermark = English.ResourceManager.GetString("result");
                         ClrBtn.Content = English.ResourceManager.GetString("clear");
+                        Help.Text = English.ResourceManager.GetString("help") + "\nadveneksanov@gmail.com";
                         ClrBtn.Width = 160;
                         break; 
                 case 2:  //Немецкий
@@ -133,6 +139,7 @@ namespace Project3
                         CalcBTN.Content = German.ResourceManager.GetString("calculate");
                         Result.Watermark = German.ResourceManager.GetString("result");
                         ClrBtn.Content = German.ResourceManager.GetString("clear");
+                        Help.Text = German.ResourceManager.GetString("help") + "\nadveneksanov@gmail.com";
                         ClrBtn.Width = 160;
                         break;
             }

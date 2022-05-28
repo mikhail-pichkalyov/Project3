@@ -129,6 +129,9 @@
   <data name="clear" xml:space="preserve">
     <value>Очистить поле вывода</value>
   </data>
+  <data name="help" xml:space="preserve">
+    <value>По всем вопросам побращайтесь по адресу</value>
+  </data>
   <data name="result" xml:space="preserve">
     <value>Результат вычислений</value>
   </data>

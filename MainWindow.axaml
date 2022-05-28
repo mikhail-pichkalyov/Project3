@@ -41,7 +41,7 @@
 			<ComboBoxItem>Русский</ComboBoxItem>
 			<ComboBoxItem>Deutsch</ComboBoxItem>
 		</ComboBox>
-		<TextBlock Name="Help" Text="По вопросам обращайтесь по почте&#x0a;adveneksanov@gmail.com" HorizontalAlignment="Right"/>
+		<TextBlock Name="Help" Text="For all questions please contact&#x0a;adveneksanov@gmail.com" FontSize="10" HorizontalAlignment="Right"/>
 		</Grid>
 	</StackPanel>
 	

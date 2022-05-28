@@ -129,6 +129,9 @@
   <data name="clear" xml:space="preserve">
     <value>Clear result field</value>
   </data>
+  <data name="help" xml:space="preserve">
+    <value>For all questions please contact</value>
+  </data>
   <data name="result" xml:space="preserve">
     <value>Result</value>
   </data>
