@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Project3</name>
+    </assembly>
+    <members>
+        <member name="T:Project3.English">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:Project3.English.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:Project3.English.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:Project3.English.accuracy">
+            <summary>
+              Ищет локализованную строку, похожую на Accuracy ofset (digits after point).
+            </summary>
+        </member>
+        <member name="P:Project3.English.argument">
+            <summary>
+              Ищет локализованную строку, похожую на Square root subtraction argument.
+            </summary>
+        </member>
+        <member name="P:Project3.English.calculate">
+            <summary>
+              Ищет локализованную строку, похожую на Calculate.
+            </summary>
+        </member>
+        <member name="P:Project3.English.clear">
+            <summary>
+              Ищет локализованную строку, похожую на Clear result field.
+            </summary>
+        </member>
+        <member name="P:Project3.English.help">
+            <summary>
+              Ищет локализованную строку, похожую на For all questions please contact.
+            </summary>
+        </member>
+        <member name="P:Project3.English.result">
+            <summary>
+              Ищет локализованную строку, похожую на Result.
+            </summary>
+        </member>
+        <member name="T:Project3.German">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:Project3.German.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:Project3.German.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:Project3.German.accuracy">
+            <summary>
+              Ищет локализованную строку, похожую на Genauigkeit in Dezimalstellen.
+            </summary>
+        </member>
+        <member name="P:Project3.German.argument">
+            <summary>
+              Ищет локализованную строку, похожую на Das argument der Berechnung der quadratwurzel.
+            </summary>
+        </member>
+        <member name="P:Project3.German.calculate">
+            <summary>
+              Ищет локализованную строку, похожую на Berechnen.
+            </summary>
+        </member>
+        <member name="P:Project3.German.clear">
+            <summary>
+              Ищет локализованную строку, похожую на Ergebnisfeld löschen.
+            </summary>
+        </member>
+        <member name="P:Project3.German.help">
+            <summary>
+              Ищет локализованную строку, похожую на Für alle Anfragen wenden Sie sich bitte an.
+            </summary>
+        </member>
+        <member name="P:Project3.German.result">
+            <summary>
+              Ищет локализованную строку, похожую на Ergebnis.
+            </summary>
+        </member>
+        <member name="T:Project3.MainWindow">
+            <summary>
+            Класс, который представляет окно.
+            </summary>
+        </member>
+        <member name="M:Project3.MainWindow.#ctor">
+            /// <summary>
+            Конструктор класса.
+            </summary>
+        </member>
+        <member name="M:Project3.MainWindow.ClrButtonClick(System.Object,Avalonia.Interactivity.RoutedEventArgs)">
+            <summary>
+            Очистка окна вывода.
+            </summary>
+            <value>The font ascent.</value>
+            <value>The font ascent.</value>
+             <param name="sender"> Объект.</param>
+             <param name="e"> Класс, дающий возможность передать какую-нибудь дополнительную информацию обработчику.</param>
+        </member>
+        <member name="M:Project3.MainWindow.txtACC_KeyPressUp(System.Object,Avalonia.Input.KeyEventArgs)">
+            <summary>
+            Ограничения на количество знаков после запятой до 1000.
+            </summary>
+        </member>
+        <member name="M:Project3.MainWindow.txtACC_KeyPressDown(System.Object,Avalonia.Input.KeyEventArgs)">
+            <summary>
+            Ввод точности.
+            </summary>
+        </member>
+        <member name="M:Project3.MainWindow.txtPassword_KeyPressUp(System.Object,Avalonia.Input.KeyEventArgs)">
+            <summary>
+            Проверка ввода правильной точки. 
+            </summary>
+            <remarks>Добавление вперед нуля, если введена точка. Удаление последнего символа строки, если нажата не точка</remarks>
+        </member>
+        <member name="M:Project3.MainWindow.txtPassword_KeyPressDown(System.Object,Avalonia.Input.KeyEventArgs)">
+            <summary>
+            Защита от дурака при вводе числа
+            </summary>
+            /// <remarks>Удаляем символы, если пользователь нажимает буквы или другие не нужные символы, а также повторно точка или минус не первым символом</remarks>
+        </member>
+        <member name="M:Project3.MainWindow.CalcButtonClick(System.Object,Avalonia.Interactivity.RoutedEventArgs)">
+            <summary>
+            Формирует правильный ввод результата
+            </summary>
+             <remarks>Добавление i, если число комплексное</remarks>
+        </member>
+        <member name="M:Project3.MainWindow.ComboBox_SelectionChanged(System.Object,Avalonia.Controls.SelectionChangedEventArgs)">
+            <summary>
+            Переключение языка.
+            </summary>
+        </member>
+        <member name="M:Project3.MainWindow.InitializeComponent(System.Boolean,System.Boolean)">
+            <summary>
+            Wires up the controls and optionally loads XAML markup and attaches dev tools (if Avalonia.Diagnostics package is referenced).
+            </summary>
+            <param name="loadXaml">Should the XAML be loaded into the component.</param>
+            <param name="attachDevTools">Should the dev tools be attached.</param>
+        </member>
+        <member name="T:Project3.LongDigits">
+            <summary>
+            Класс, который представляет длинную арифметику.
+            </summary>
+        </member>
+        <member name="M:Project3.LongDigits.#ctor(System.String)">
+            /// <summary>
+            Конструктор класса.
+            </summary>
+        </member>
+        <member name="M:Project3.LongDigits.ToArray(Project3.LongDigits)">
+            /// <summary>
+            Конвертирование массива в класс.
+            </summary>
+            <param name="input"> Числа. </param>
+            <returns> Готовый массив. </returns>
+        </member>
+        <member name="M:Project3.LongDigits.DeleteNulls">
+            /// <summary>
+            Удаление лишних нулей из начала числа.
+            </summary>
+            <returns> Число. </returns>
+        </member>
+        <member name="M:Project3.LongDigits.op_GreaterThan(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора сравнения "меньше".
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+             <remarks>Сравниваем числа по длине и разрядам</remarks>
+        </member>
+        <member name="M:Project3.LongDigits.op_LessThan(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора сравнения "больше".
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+             <remarks>Сравниваем числа по длине и разрядам</remarks>
+        </member>
+        <member name="M:Project3.LongDigits.op_Equality(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора сравнения ==.
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+            ///  <remarks>Сравниваем числа по длине и разрядам</remarks>
+        </member>
+        <member name="M:Project3.LongDigits.op_Inequality(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора сравнения !=.
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+             <remarks>Используем пердыдущие перегрузки для сравнения</remarks>
+        </member>
+        <member name="M:Project3.LongDigits.op_GreaterThanOrEqual(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора сравнения "меньше или равно".
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+             <remarks>Используем пердыдущие перегрузки для сравнения</remarks>
+        </member>
+        <member name="M:Project3.LongDigits.op_LessThanOrEqual(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора сравнения "больше или равно".
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+             <remarks>Используем пердыдущие перегрузки для сравнения</remarks>
+        </member>
+        <member name="M:Project3.LongDigits.op_Addition(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора сложения.
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+        </member>
+        <member name="M:Project3.LongDigits.op_Subtraction(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора вычитания.
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+        </member>
+        <member name="M:Project3.LongDigits.op_Multiply(Project3.LongDigits,Project3.LongDigits)">
+            /// <summary>
+            Перегрузка оператора умножения.
+            </summary>
+            <param name="inFirst"> Число. </param>
+            <param name="inSecond"> Число. </param>
+        </member>
+        <member name="M:Project3.LongDigits.sqrt(System.String,System.Int32)">
+            /// <summary>
+            Вычисление корня.
+            </summary>
+            <param name="s"> Число. </param>
+            <param name="nac"> Точность. </param>
+            ///  <remarks>Ищем ближайший квадрат искомого числа, и далее вычисляем знаки после запятой, если они есть</remarks>
+        </member>
+        <member name="T:Project3.Russian">
+            <summary>
+              Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.ResourceManager">
+            <summary>
+              Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.Culture">
+            <summary>
+              Перезаписывает свойство CurrentUICulture текущего потока для всех
+              обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.accuracy">
+            <summary>
+              Ищет локализованную строку, похожую на Точность в знаках после запятой.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.argument">
+            <summary>
+              Ищет локализованную строку, похожую на Аргумент вычисления корня.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.calculate">
+            <summary>
+              Ищет локализованную строку, похожую на Вычислить.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.clear">
+            <summary>
+              Ищет локализованную строку, похожую на Очистить поле вывода.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.help">
+            <summary>
+              Ищет локализованную строку, похожую на По всем вопросам побращайтесь по адресу.
+            </summary>
+        </member>
+        <member name="P:Project3.Russian.result">
+            <summary>
+              Ищет локализованную строку, похожую на Результат вычислений.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -7,9 +7,15 @@ using System.IO;
 
 namespace Project3
 {
+    /// <summary>
+        /// Класс, который представляет окно.
+        /// </summary>
     public partial class MainWindow : Window
     {
         
+        /// /// <summary>
+		/// Конструктор класса.
+		/// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -23,10 +29,22 @@ namespace Project3
         /*bool pointcheck;
         bool minuslip;
         int index;*/
+
+        /// <summary>
+        /// Очистка окна вывода.
+        /// </summary>
+        /// <value>The font ascent.</value>
+        /// <value>The font ascent.</value>
+        ///  <param name="sender"> Объект.</param>
+        ///  <param name="e"> Класс, дающий возможность передать какую-нибудь дополнительную информацию обработчику.</param>
+
         private void ClrButtonClick(object sender, RoutedEventArgs e)
         {
             if (Result.Text != "") Result.Text = "";//чистим окно вывода
         }
+        /// <summary>
+		/// Ограничения на количество знаков после запятой до 1000.
+		/// </summary>
         private void txtACC_KeyPressUp(object sender, KeyEventArgs e)
         {
             if ((int)e.Key == 116 || (int)e.Key == 117)
@@ -36,6 +54,10 @@ namespace Project3
                 Accuracy.Text = "1000";
             }
         }
+        /// <summary>
+		/// Ввод точности.
+		/// </summary>
+        
         private void txtACC_KeyPressDown(object sender, KeyEventArgs e)//тут всё то же, что и при вводе в Аргумент, только поменьше
         {
             if ((int)e.Key == 116 || (int)e.Key == 117)
@@ -44,8 +66,12 @@ namespace Project3
             if (((int)e.Key < 34 || (int)e.Key > 43) && ((int)e.Key < 74 || (int)e.Key > 83) || shift)
                 e.Handled = true;
         }
+        /// <summary>
+        /// Проверка ввода правильной точки. 
+        /// </summary>
+        /// <remarks>Добавление вперед нуля, если введена точка. Удаление последнего символа строки, если нажата не точка</remarks>
         private void txtPassword_KeyPressUp(object sender, KeyEventArgs e)
-        {
+       {
             if ((int)e.Key == 116 || (int)e.Key == 117)//если отжали шифт
                 shift = false;
             if ((int)e.Key == 144||(int)e.Key == 145 || (int)e.Key == 142)//если введена предположительно точка, проверяем, она ли это
@@ -70,6 +96,10 @@ namespace Project3
                 if (Argument.Text[0] == '-' && Argument.Text[1]=='.')
                         Argument.Text = "-0" + Argument.Text.Substring(1);
         }
+        /// <summary>
+        /// Защита от дурака при вводе числа
+        /// </summary>
+        /// /// <remarks>Удаляем символы, если пользователь нажимает буквы или другие не нужные символы, а также повторно точка или минус не первым символом</remarks>
         private void txtPassword_KeyPressDown(object sender, KeyEventArgs e)//защита от дурака при вводе числа
         {
             if ((int)e.Key == 116 || (int)e.Key == 117)//чтобы при зажатии шифт нельзя было нажать на цифры
@@ -80,6 +110,10 @@ namespace Project3
             if ((int)e.Key == 144||(int)e.Key == 145 || (int)e.Key == 142)//если это возможные клавиши, записывающие точку
             { pointlip = true;  }//просчитывается, что точка уже использовалась, а если точка удерживается, то просчитывается, чтобы ничего не вводилось, пока точка залипает
         }
+        /// <summary>
+        /// Формирует правильный ввод результата
+        /// </summary>
+        ///  <remarks>Добавление i, если число комплексное</remarks>
         private void CalcButtonClick(object sender, RoutedEventArgs e)
         {
             string arg = Argument.Text;//Аргумент текст
@@ -109,7 +143,10 @@ namespace Project3
             }
         }
 
-
+        /// <summary>
+        /// Переключение языка.
+        /// </summary>
+        
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if(LangSelector!=null)
@@ -148,13 +185,24 @@ namespace Project3
 
 
     }
+    /// <summary>
+    /// Класс, который представляет длинную арифметику.
+    /// </summary>
     class LongDigits
     {
         string digits;
+        /// /// <summary>
+		/// Конструктор класса.
+		/// </summary>
         public LongDigits(string digits)//класс для длинной арифметики
         {
             this.digits = digits;
         }
+        /// /// <summary>
+        /// Конвертирование массива в класс.
+        /// </summary>
+        /// <param name="input"> Числа. </param>
+        /// <returns> Готовый массив. </returns>
         static int[] ToArray(LongDigits input)//конвертивуем в массив
         {
             int[] result = new int[input.digits.Length];
@@ -165,6 +213,10 @@ namespace Project3
             }
             return result;//возвращаем готовый массив чисел
         }
+        /// /// <summary>
+        /// Удаление лишних нулей из начала числа.
+        /// </summary>
+        /// <returns> Число. </returns>
         public LongDigits DeleteNulls()//удаляем лишние нули в начале
         {
             while ((digits[0] == '0')&&(digits.Length>1))
@@ -173,6 +225,12 @@ namespace Project3
             }
             return new LongDigits(digits);
         }
+        /// /// <summary>
+        /// Перегрузка оператора сравнения "меньше".
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
+        ///  <remarks>Сравниваем числа по длине и разрядам</remarks>
         public static bool operator >(LongDigits inFirst, LongDigits inSecond)//тут и далее ниже идёт переопределение операторов. Если будут какие-то вопросы, задавай, комменты там толкьо, где я считаю нужным и где они до этого были
         {
             inFirst = inFirst.DeleteNulls();
@@ -199,6 +257,12 @@ namespace Project3
                 return false;//в противном случае - равны
             }
         }
+        /// /// <summary>
+        /// Перегрузка оператора сравнения "больше".
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
+        ///  <remarks>Сравниваем числа по длине и разрядам</remarks>
         public static bool operator <(LongDigits inFirst, LongDigits inSecond)
         {
             inFirst = inFirst.DeleteNulls();
@@ -221,6 +285,12 @@ namespace Project3
                 return false;
             }
         }
+        /// /// <summary>
+        /// Перегрузка оператора сравнения ==.
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
+        /// ///  <remarks>Сравниваем числа по длине и разрядам</remarks>
         public static bool operator ==(LongDigits inFirst, LongDigits inSecond)//тут то же самое, что и с больше и меньше
         {
             inFirst = inFirst.DeleteNulls();
@@ -246,22 +316,45 @@ namespace Project3
                 return true;
             }
         }
+        /// /// <summary>
+        /// Перегрузка оператора сравнения !=.
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
+       ///  <remarks>Используем пердыдущие перегрузки для сравнения</remarks>
         public static bool operator !=(LongDigits inFirst, LongDigits inSecond)
         {
             if (inFirst == inSecond) return false;
             else return true;
         }
+        /// /// <summary>
+        /// Перегрузка оператора сравнения "меньше или равно".
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
+        ///  <remarks>Используем пердыдущие перегрузки для сравнения</remarks>
         public static bool operator >=(LongDigits inFirst, LongDigits inSecond)
         {
             if ((inFirst > inSecond) || (inSecond == inFirst)) return true;
             else return false;
         }
+        /// /// <summary>
+        /// Перегрузка оператора сравнения "больше или равно".
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
+        ///  <remarks>Используем пердыдущие перегрузки для сравнения</remarks>
         public static bool operator <=(LongDigits inFirst, LongDigits inSecond)
         {
             if ((inFirst < inSecond) || (inSecond == inFirst)) return true;
             else return false;
 
         }
+        /// /// <summary>
+        /// Перегрузка оператора сложения.
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
         public static LongDigits operator +(LongDigits inFirst, LongDigits inSecond)//сложение
         {
             inFirst = inFirst.DeleteNulls();
@@ -300,6 +393,11 @@ namespace Project3
             }
             return result;
         }
+        /// /// <summary>
+        /// Перегрузка оператора вычитания.
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
         public static LongDigits operator -(LongDigits inFirst, LongDigits inSecond)//вычитание
         {
             inFirst = inFirst.DeleteNulls();
@@ -335,6 +433,11 @@ namespace Project3
                 return result;
             }
         }
+        /// /// <summary>
+        /// Перегрузка оператора умножения.
+        /// </summary>
+        /// <param name="inFirst"> Число. </param>
+        /// <param name="inSecond"> Число. </param>
         public static LongDigits operator *(LongDigits inFirst, LongDigits inSecond)
         {
             inFirst=inFirst.DeleteNulls();
@@ -358,6 +461,12 @@ namespace Project3
             }
             return result;
         }
+        /// /// <summary>
+        /// Вычисление корня.
+        /// </summary>
+        /// <param name="s"> Число. </param>
+        /// <param name="nac"> Точность. </param>
+        /// ///  <remarks>Ищем ближайший квадрат искомого числа, и далее вычисляем знаки после запятой, если они есть</remarks>
         public static string sqrt(string s, int nac)//корень
         {
 
